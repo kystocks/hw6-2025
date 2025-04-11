@@ -12,16 +12,18 @@ window.addEventListener("load", function() {
     video.loop = false;
     
     // Display initial volume information
-    document.querySelector("#volume").textContent = video.volume * 100 + "%";
+    document.querySelector("#volume").textContent = Math.round(video.volume * 100) + "%";
 });
 
 // Play Button
 document.querySelector("#play").addEventListener("click", function() {
     console.log("Play Video");
-    video.play();
     
-    // Update the volume information
-    document.querySelector("#volume").textContent = video.volume * 100 + "%";
+    // Update the volume information first
+    document.querySelector("#volume").textContent = Math.round(video.volume * 100) + "%";
+    
+    // Then play the video
+    video.play();
 });
 
 // Pause Button
@@ -80,6 +82,9 @@ document.querySelector("#mute").addEventListener("click", function() {
         video.muted = true;
         this.textContent = "Unmute";
     }
+    
+    // Update volume display when mute status changes
+    document.querySelector("#volume").textContent = video.muted ? "0%" : Math.round(video.volume * 100) + "%";
 });
 
 // Volume Slider
@@ -90,7 +95,7 @@ document.querySelector("#slider").addEventListener("input", function() {
     video.volume = this.value / 100;
     
     // Update the volume information
-    document.querySelector("#volume").textContent = video.volume * 100 + "%";
+    document.querySelector("#volume").textContent = Math.round(video.volume * 100) + "%";
 });
 
 // Old School Button (Styled)
