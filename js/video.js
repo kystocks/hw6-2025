@@ -10,16 +10,13 @@ window.addEventListener("load", function() {
     // Turn off autoplay and turn off looping
     video.autoplay = false;
     video.loop = false;
-    
-    // Display initial volume information
-    document.querySelector("#volume").textContent = Math.round(video.volume * 100) + "%";
 });
 
 // Play Button
 document.querySelector("#play").addEventListener("click", function() {
     console.log("Play Video");
     
-    // Update the volume information first
+    // Update the volume information
     document.querySelector("#volume").textContent = Math.round(video.volume * 100) + "%";
     
     // Then play the video
